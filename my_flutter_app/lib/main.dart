@@ -11,8 +11,8 @@ void main() {
         ),
         body: const Center(
           child: Image(
-            image: NetworkImage(
-              'https://i.gifer.com/4Cb2.gif',
+            image: AssetImage(
+              'images/bulb.jpg',
               scale: 2.5,
             ),
           ),
