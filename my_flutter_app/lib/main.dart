@@ -7,7 +7,7 @@ void main() {
         backgroundColor: Colors.black,
         appBar: AppBar(
           backgroundColor: Colors.deepOrange,
-          title: const Text("My first flutter app"),
+          title: const Text("My first flutter app with icon"),
         ),
         body: const Center(
           child: Image(
