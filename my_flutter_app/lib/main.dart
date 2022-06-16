@@ -2,71 +2,77 @@ import 'package:flutter/material.dart';
 
 void main() {
   runApp(
-    MyApp(),
+    const MyApp(),
   );
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         body: SafeArea(
-          child: Center(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              // verticalDirection: VerticalDirection.up,
-              children: [
-                Container(
-                  decoration: BoxDecoration(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Container(
+                    width: 160,
+                    height: 160,
+                    color: Colors.amber,
+                  ),
+                  Container(
+                    width: 160,
+                    height: 160,
+                    color: Colors.blue,
+                  ),
+                ],
+              ),
+              Container(
+                width: 200,
+                height: 200,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(150),
+                  border: Border.all(
                     color: Colors.black,
-                    image: DecorationImage(
-                      image: AssetImage('images/bulb.jpg'),
-                      fit: BoxFit.fill,
-                    ),
-                    border: Border.all(
+                    width: 8,
+                  ),
+                  boxShadow: const [
+                    BoxShadow(
                       color: Colors.grey,
-                      width: 8,
+                      spreadRadius: 25,
+                      blurRadius: 15,
                     ),
-                    borderRadius: BorderRadius.circular(150),
-                  ),
-                  // color: Colors.lightBlue,
-                  height: 250,
-                  width: 250,
-                  padding: const EdgeInsets.all(20),
-                  // margin: const EdgeInsets.all(10),
-                  child: const Text(
-                    'Hello World!',
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.white,
-                      fontWeight: FontWeight.w900,
-                    ),
+                  ],
+                  image: const DecorationImage(
+                    image: AssetImage('images/bulb.jpg'),
+                    fit: BoxFit.fill,
                   ),
                 ),
-                CircleAvatar(
-                  backgroundImage: AssetImage('images/bulb.jpg'),
-                  radius: 50,
-                ),
-              ],
-            ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Container(
+                    width: 160,
+                    height: 160,
+                    color: Colors.amber,
+                  ),
+                  Container(
+                    width: 160,
+                    height: 160,
+                    color: Colors.blue,
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
       ),
     );
   }
 }
-
-/*
-        child: Scaffold(
-          backgroundColor: Colors.pink,
-          appBar: AppBar(
-            backgroundColor: Colors.red,
-            title: const Text("Hot reload implemented"),
-          ),
-          body: const Center(
-            child: 
-          ),
-        ),
-*/
