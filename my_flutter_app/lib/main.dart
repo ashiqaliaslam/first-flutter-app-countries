@@ -12,25 +12,27 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         body: SafeArea(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.max,
+            verticalDirection: VerticalDirection.up,
             children: [
               Container(
                 color: Colors.lightBlue,
                 padding: const EdgeInsets.all(20),
-                margin: const EdgeInsets.all(10),
+                // margin: const EdgeInsets.all(10),
                 child: const Text(
                   'Hello World!',
                   style: TextStyle(
-                    fontSize: 36,
+                    fontSize: 18,
                     color: Colors.white,
                     fontWeight: FontWeight.w900,
                   ),
                 ),
               ),
               const Image(
+                height: 150,
+                width: 150,
                 image: AssetImage('images/bulb.jpg'),
               ),
             ],
