@@ -12,16 +12,28 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         body: SafeArea(
-          child: Center(
-            child: Container(
-              color: Colors.blue,
-              padding: EdgeInsets.symmetric(vertical: 20, horizontal: 12),
-              margin: EdgeInsets.only(left: 10, top: 20),
-              child: Text(
-                'I\'m a dev',
-                style: TextStyle(fontSize: 24, color: Colors.white),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Container(
+                color: Colors.lightBlue,
+                padding: const EdgeInsets.all(20),
+                margin: const EdgeInsets.all(10),
+                child: const Text(
+                  'Hello World!',
+                  style: TextStyle(
+                    fontSize: 36,
+                    color: Colors.white,
+                    fontWeight: FontWeight.w900,
+                  ),
+                ),
               ),
-            ),
+              const Image(
+                image: AssetImage('images/bulb.jpg'),
+              ),
+            ],
           ),
         ),
       ),
@@ -37,9 +49,7 @@ class MyApp extends StatelessWidget {
             title: const Text("Hot reload implemented"),
           ),
           body: const Center(
-            child: Image(
-              image: AssetImage('images/bulb.jpg'),
-            ),
+            child: 
           ),
         ),
 */
