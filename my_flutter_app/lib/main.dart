@@ -1,11 +1,4 @@
 import 'package:flutter/material.dart';
-// Whenever we create a base widget it is by default
-// align to top left corner
-
-// Sometimes it is not even visible because of appBar
-// or mobile device screen design.
-
-// safeArea can solve this issue
 
 void main() {
   runApp(
@@ -17,7 +10,26 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: SafeArea(
+      home: Scaffold(
+        body: SafeArea(
+          child: Center(
+            child: Container(
+              color: Colors.blue,
+              padding: EdgeInsets.symmetric(vertical: 20, horizontal: 12),
+              margin: EdgeInsets.only(left: 10, top: 20),
+              child: Text(
+                'I\'m a dev',
+                style: TextStyle(fontSize: 24, color: Colors.white),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/*
         child: Scaffold(
           backgroundColor: Colors.pink,
           appBar: AppBar(
@@ -26,12 +38,8 @@ class MyApp extends StatelessWidget {
           ),
           body: const Center(
             child: Image(
-              // image: NetworkImage('https://i.gifer.com/4Cb2.gif', scale: 2.5),
               image: AssetImage('images/bulb.jpg'),
             ),
           ),
         ),
-      ),
-    );
-  }
-}
+*/
