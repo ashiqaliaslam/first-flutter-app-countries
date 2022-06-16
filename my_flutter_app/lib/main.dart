@@ -12,30 +12,45 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         body: SafeArea(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            verticalDirection: VerticalDirection.up,
-            children: [
-              Container(
-                color: Colors.lightBlue,
-                padding: const EdgeInsets.all(20),
-                // margin: const EdgeInsets.all(10),
-                child: const Text(
-                  'Hello World!',
-                  style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.white,
-                    fontWeight: FontWeight.w900,
+          child: Center(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              // verticalDirection: VerticalDirection.up,
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    color: Colors.black,
+                    image: DecorationImage(
+                      image: AssetImage('images/bulb.jpg'),
+                      fit: BoxFit.fill,
+                    ),
+                    border: Border.all(
+                      color: Colors.grey,
+                      width: 8,
+                    ),
+                    borderRadius: BorderRadius.circular(150),
+                  ),
+                  // color: Colors.lightBlue,
+                  height: 250,
+                  width: 250,
+                  padding: const EdgeInsets.all(20),
+                  // margin: const EdgeInsets.all(10),
+                  child: const Text(
+                    'Hello World!',
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w900,
+                    ),
                   ),
                 ),
-              ),
-              const Image(
-                height: 150,
-                width: 150,
-                image: AssetImage('images/bulb.jpg'),
-              ),
-            ],
+                CircleAvatar(
+                  backgroundImage: AssetImage('images/bulb.jpg'),
+                  radius: 50,
+                ),
+              ],
+            ),
           ),
         ),
       ),
