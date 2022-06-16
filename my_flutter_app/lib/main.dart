@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// Images can be converted to icons online i.e. https://www.iconify.pro/
 void main() {
   runApp(
     MaterialApp(
