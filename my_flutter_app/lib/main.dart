@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
-// To get the hot reload feature work wee need to restructure
-// our code by using stateless or stateful custom widgets
+// Whenever we create a base widget it is by default
+// align to top left corner
 
-// Instead of passing widget tree in runApp(), we create a
-// new custom widget and pass that custom widget to runnApp
+// Sometimes it is not even visible because of appBar
+// or mobile device screen design.
 
-// WRONG
-// void main() {
-//   runApp(MaterialApp(
-//     home: Text("My Flutter App"),
-//   ));
-// }
+// safeArea can solve this issue
+
 void main() {
   runApp(
     MyApp(),
@@ -21,16 +17,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        backgroundColor: Colors.pink,
-        appBar: AppBar(
-          backgroundColor: Colors.red,
-          title: const Text("Hot reload implemented"),
-        ),
-        body: const Center(
-          child: Image(
-            // image: NetworkImage('https://i.gifer.com/4Cb2.gif', scale: 2.5),
-            image: AssetImage('images/bulb.jpg'),
+      home: SafeArea(
+        child: Scaffold(
+          backgroundColor: Colors.pink,
+          appBar: AppBar(
+            backgroundColor: Colors.red,
+            title: const Text("Hot reload implemented"),
+          ),
+          body: const Center(
+            child: Image(
+              // image: NetworkImage('https://i.gifer.com/4Cb2.gif', scale: 2.5),
+              image: AssetImage('images/bulb.jpg'),
+            ),
           ),
         ),
       ),
