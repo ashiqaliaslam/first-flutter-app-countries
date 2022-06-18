@@ -12,77 +12,76 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         body: SafeArea(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Container(
-                    width: 160,
-                    height: 160,
-                    color: Colors.amber,
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                TextButton(
+                  onPressed: () {
+                    print('its a button');
+                  },
+                  onLongPress: () {
+                    print('this button is log pressed');
+                  },
+                  child: Text('Text Button'),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    print('elevated button');
+                  },
+                  onLongPress: () {
+                    print('this button is log pressed and elevated');
+                  },
+                  child: Text('Text elevated Button'),
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(Colors.orange),
                   ),
-                  Container(
-                    width: 160,
-                    height: 160,
-                    color: Colors.blue,
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Container(
-                    width: 200,
-                    height: 200,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(150),
-                      border: Border.all(
-                        color: Colors.black,
-                        width: 8,
-                      ),
-                      boxShadow: const [
-                        BoxShadow(
-                          color: Colors.grey,
-                          spreadRadius: 25,
-                          blurRadius: 15,
-                        ),
-                      ],
-                      image: const DecorationImage(
-                        image: AssetImage('images/bulb.jpg'),
-                        fit: BoxFit.fill,
-                      ),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    print('elevated button 2');
+                  },
+                  onLongPress: () {
+                    print('this button is log pressed and elevated 2');
+                  },
+                  child: Text('Text elevated Button 2'),
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.resolveWith(
+                      (states) => states.contains(MaterialState.pressed)
+                          ? Colors.purple
+                          : Colors.black,
                     ),
                   ),
-                  const Text(
-                    'Umm-e-Hani',
-                    style: TextStyle(
-                        fontSize: 24,
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'OpenSans'),
+                ),
+                OutlinedButton(
+                  onPressed: () {
+                    print('outlined button pressed');
+                  },
+                  onLongPress: () {
+                    print('outlined button long pressed');
+                  },
+                  child: Text('Outlined Button 2'),
+                  style: ButtonStyle(
+                    foregroundColor: MaterialStateProperty.all(Colors.teal),
                   ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Container(
-                    width: 160,
-                    height: 160,
-                    color: Colors.amber,
-                  ),
-                  Container(
-                    width: 160,
-                    height: 160,
-                    color: Colors.blue,
-                  ),
-                ],
-              ),
-            ],
+                ),
+                IconButton(
+                  onPressed: () => print('Icon button pressed'),
+                  icon: Icon(Icons.volume_down_outlined),
+                  color: Colors.purple,
+                  iconSize: 34,
+                ),
+              ],
+            ),
           ),
         ),
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.add),
+          onPressed: () => print('floating action button pressed'),
+          backgroundColor: Colors.orange,
+          splashColor: Colors.blue,
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       ),
     );
   }
