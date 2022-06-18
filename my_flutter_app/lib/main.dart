@@ -30,27 +30,40 @@ class MyApp extends StatelessWidget {
                   ),
                 ],
               ),
-              Container(
-                width: 200,
-                height: 200,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(150),
-                  border: Border.all(
-                    color: Colors.black,
-                    width: 8,
-                  ),
-                  boxShadow: const [
-                    BoxShadow(
-                      color: Colors.grey,
-                      spreadRadius: 25,
-                      blurRadius: 15,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Container(
+                    width: 200,
+                    height: 200,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(150),
+                      border: Border.all(
+                        color: Colors.black,
+                        width: 8,
+                      ),
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Colors.grey,
+                          spreadRadius: 25,
+                          blurRadius: 15,
+                        ),
+                      ],
+                      image: const DecorationImage(
+                        image: AssetImage('images/bulb.jpg'),
+                        fit: BoxFit.fill,
+                      ),
                     ),
-                  ],
-                  image: const DecorationImage(
-                    image: AssetImage('images/bulb.jpg'),
-                    fit: BoxFit.fill,
                   ),
-                ),
+                  const Text(
+                    'Umm-e-Hani',
+                    style: TextStyle(
+                        fontSize: 24,
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'OpenSans'),
+                  ),
+                ],
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
