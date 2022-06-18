@@ -9,79 +9,48 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    return MyBulbApp();
+  }
+}
+
+class MyBulbApp extends StatefulWidget {
+  @override
+  State<MyBulbApp> createState() => _MyBulbAppState();
+}
+
+class _MyBulbAppState extends State<MyBulbApp> {
+  bool isTurnedOn = false;
+
+  @override
+  Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        body: SafeArea(
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                TextButton(
+        appBar: AppBar(
+          title: Text('Lets Glow'),
+          backgroundColor: Colors.blueAccent,
+          centerTitle: true,
+        ),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Icon(
+                isTurnedOn ? Icons.lightbulb : Icons.lightbulb_outline,
+                size: 200,
+                color: isTurnedOn ? Colors.yellow : Colors.black,
+              ),
+              ElevatedButton(
                   onPressed: () {
-                    print('its a button');
+                    print('button pressed');
+                    setState(() {
+                      isTurnedOn = !isTurnedOn;
+                    });
                   },
-                  onLongPress: () {
-                    print('this button is log pressed');
-                  },
-                  child: Text('Text Button'),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    print('elevated button');
-                  },
-                  onLongPress: () {
-                    print('this button is log pressed and elevated');
-                  },
-                  child: Text('Text elevated Button'),
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.orange),
-                  ),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    print('elevated button 2');
-                  },
-                  onLongPress: () {
-                    print('this button is log pressed and elevated 2');
-                  },
-                  child: Text('Text elevated Button 2'),
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.resolveWith(
-                      (states) => states.contains(MaterialState.pressed)
-                          ? Colors.purple
-                          : Colors.black,
-                    ),
-                  ),
-                ),
-                OutlinedButton(
-                  onPressed: () {
-                    print('outlined button pressed');
-                  },
-                  onLongPress: () {
-                    print('outlined button long pressed');
-                  },
-                  child: Text('Outlined Button 2'),
-                  style: ButtonStyle(
-                    foregroundColor: MaterialStateProperty.all(Colors.teal),
-                  ),
-                ),
-                IconButton(
-                  onPressed: () => print('Icon button pressed'),
-                  icon: Icon(Icons.volume_down_outlined),
-                  color: Colors.purple,
-                  iconSize: 34,
-                ),
-              ],
-            ),
+                  child: Text(!isTurnedOn ? 'Turn On' : 'Turn Off')),
+            ],
           ),
         ),
-        floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.add),
-          onPressed: () => print('floating action button pressed'),
-          backgroundColor: Colors.orange,
-          splashColor: Colors.blue,
-        ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       ),
     );
   }
