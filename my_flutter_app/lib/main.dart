@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:my_flutter_app/countries.dart';
-import 'package:rflutter_alert/rflutter_alert.dart';
+import 'package:my_flutter_app/custom_button.dart';
+import 'package:my_flutter_app/custom_card.dart';
+import 'package:my_flutter_app/quiz.dart';
+import 'package:my_flutter_app/score_card.dart';
+import 'package:my_flutter_app/utils.dart';
 
 void main() {
   runApp(
@@ -23,9 +27,14 @@ class MyCountryApp extends StatefulWidget {
 }
 
 class _MyCountryAppState extends State<MyCountryApp> {
-  int score = 0;
-  int totalAttempted = 0;
+  Quiz quizScoreCard = Quiz();
   bool showAnswer = false;
+
+  void handleShowAnswer() {
+    setState(() {
+      showAnswer = !showAnswer;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,12 +46,7 @@ class _MyCountryAppState extends State<MyCountryApp> {
         title: Text('Guess the Capital City!'),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            score = 0;
-            totalAttempted = 0;
-          });
-        },
+        onPressed: resetQuiz,
         // ignore: prefer_const_constructors
         child: Text('Reset'),
       ),
@@ -52,107 +56,82 @@ class _MyCountryAppState extends State<MyCountryApp> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         // ignore: prefer_const_literals_to_create_immutables
         children: [
-          // ignore: prefer_const_constructors
-          Center(
-            child: Text(
-              'Score ${score}/${totalAttempted}',
+          ScoreCard(
+            totalAttempted: quizScoreCard.totalAttempted,
+            score: quizScoreCard.score,
+          ),
+          CustomCard(
+            height: 200,
+            shadowColor: Colors.grey,
+            headingWidget: Text(
+              showAnswer ? 'Capital' : 'Country',
               style: TextStyle(
                 fontSize: 36,
                 fontWeight: FontWeight.w900,
               ),
             ),
-          ),
-          Padding(
-            // ignore: prefer_const_constructors
-            padding: EdgeInsets.all(20),
-            child: SizedBox(
-              height: 200,
-              child: Card(
-                elevation: 20,
-                shadowColor: Colors.grey,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      showAnswer ? 'Capital' : 'Country',
-                      style: TextStyle(
-                        fontSize: 36,
-                        fontWeight: FontWeight.w900,
-                      ),
-                    ),
-                    Text(
-                      showAnswer
-                          ? countries[totalAttempted]['city']!
-                          : countries[totalAttempted]['country']!,
-                      style: TextStyle(
-                          fontSize: 28,
-                          fontWeight: FontWeight.w900,
-                          color: Colors.blueAccent),
-                    )
-                  ],
-                ),
-              ),
+            bodyWidget: Text(
+              showAnswer
+                  ? countries[quizScoreCard.totalAttempted]['city']!
+                  : countries[quizScoreCard.totalAttempted]['country']!,
+              style: TextStyle(
+                  fontSize: 28,
+                  fontWeight: FontWeight.w900,
+                  color: Colors.blueAccent),
             ),
           ),
           SizedBox(
             // width: 50,
             child: Center(
-              child: ElevatedButton(
-                onPressed: () {
-                  setState(() {
-                    showAnswer = !showAnswer;
-                  });
-                },
-                child: Text('Show ${showAnswer ? 'Answer' : 'Question'}'),
+              child: CustomButton(
+                onPress: handleShowAnswer,
+                title: 'Show ${showAnswer ? 'Answer' : 'Question'}',
               ),
             ),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              ElevatedButton(
-                onPressed: () {
-                  setState(() {
-                    if (totalAttempted < countries.length - 1) {
-                      score++;
-                      totalAttempted++;
-                    } else {
-                      Alert(
-                        context: context,
-                        title: 'ALERT',
-                        desc: 'You already have reached to the end of list.',
-                      ).show();
-                    }
-                  });
-                },
-                child: const Text('Correct'),
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.green),
-                ),
+              CustomButton(
+                onPress: markAnswerCorrect,
+                title: 'Correct',
+                backgroundColor: Colors.green,
               ),
-              ElevatedButton(
-                onPressed: () {
-                  setState(() {
-                    if (totalAttempted < countries.length - 1) {
-                      totalAttempted++;
-                    } else {
-                      Alert(
-                        context: context,
-                        title: 'ALERT',
-                        desc: 'You already have reached to the end of list.',
-                      ).show();
-                    }
-                  });
-                },
-                child: const Text('Wrong'),
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.red),
-                ),
+              CustomButton(
+                title: 'Wrong',
+                onPress: markAnswerWrong,
+                backgroundColor: Colors.red,
               ),
             ],
           ),
         ],
       ),
     );
+  }
+
+  markAnswerWrong() {
+    setState(() {
+      if (quizScoreCard.totalAttempted < countries.length - 1) {
+        quizScoreCard.markAnswerWrong();
+      } else {
+        showEOLAlert(context);
+      }
+    });
+  }
+
+  markAnswerCorrect() {
+    setState(() {
+      if (quizScoreCard.totalAttempted < countries.length - 1) {
+        quizScoreCard.markAnswerCorrect();
+      } else {
+        showEOLAlert(context);
+      }
+    });
+  }
+
+  resetQuiz() {
+    setState(() {
+      quizScoreCard.resetQuiz();
+    });
   }
 }
