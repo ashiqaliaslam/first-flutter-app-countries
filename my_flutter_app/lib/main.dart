@@ -16,7 +16,9 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: MyCountryApp());
+    return MaterialApp(
+      home: MyCountryApp(),
+    );
   }
 }
 
@@ -79,16 +81,17 @@ class _MyCountryAppState extends State<MyCountryApp> {
                   fontWeight: FontWeight.w900,
                   color: Colors.blueAccent),
             ),
+            onPress: handleShowAnswer,
           ),
-          SizedBox(
-            // width: 50,
-            child: Center(
-              child: CustomButton(
-                onPress: handleShowAnswer,
-                title: 'Show ${showAnswer ? 'Answer' : 'Question'}',
-              ),
-            ),
-          ),
+          // SizedBox(
+          //   // width: 50,
+          //   child: Center(
+          //     child: CustomButton(
+          //       onPress: handleShowAnswer,
+          //       title: 'Show ${showAnswer ? 'Answer' : 'Question'}',
+          //     ),
+          //   ),
+          // ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [

@@ -8,6 +8,7 @@ class CustomCard extends StatelessWidget {
     this.backgroundColor,
     this.shadowColor,
     this.height,
+    this.onPress,
   });
 
   final double? elevation;
@@ -16,6 +17,7 @@ class CustomCard extends StatelessWidget {
   final double? height;
   final Color? backgroundColor;
   final Color? shadowColor;
+  final VoidCallback? onPress;
 
   @override
   Widget build(BuildContext context) {
@@ -24,16 +26,19 @@ class CustomCard extends StatelessWidget {
       padding: EdgeInsets.all(20),
       child: SizedBox(
         height: height,
-        child: Card(
-          elevation: elevation,
-          shadowColor: shadowColor,
-          color: backgroundColor,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(child: headingWidget),
-              Container(child: bodyWidget),
-            ],
+        child: GestureDetector(
+          onTap: onPress,
+          child: Card(
+            elevation: elevation,
+            shadowColor: shadowColor,
+            color: backgroundColor,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(child: headingWidget),
+                Container(child: bodyWidget),
+              ],
+            ),
           ),
         ),
       ),
