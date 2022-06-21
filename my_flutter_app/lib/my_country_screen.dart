@@ -1,5 +1,6 @@
 // ignore: use_key_in_widget_constructors
 import 'package:flutter/material.dart';
+import 'package:my_flutter_app/about_screen.dart';
 import 'package:my_flutter_app/countries.dart';
 import 'package:my_flutter_app/custom_button.dart';
 import 'package:my_flutter_app/custom_card.dart';
@@ -40,10 +41,34 @@ class _MyCountryAppState extends State<MyCountryApp> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         // ignore: prefer_const_literals_to_create_immutables
+
         children: [
+          GestureDetector(
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => AboutScreen(),
+              ),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(15),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: const [
+                  Text(
+                    'About Us',
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.red,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
           ScoreCard(
             totalAttempted: quizScoreCard.totalAttempted,
             score: quizScoreCard.score,
