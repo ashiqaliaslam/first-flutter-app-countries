@@ -18,7 +18,6 @@ class MyApp extends StatelessWidget {
         '/about': (context) => AboutScreen(),
       },
       initialRoute: '/',
-      home: MyCountryApp(),
       theme: ThemeData(
         primaryColor: Colors.red,
         scaffoldBackgroundColor: Colors.lightBlue.shade100,

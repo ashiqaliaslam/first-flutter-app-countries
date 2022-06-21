@@ -1,6 +1,5 @@
 // ignore: use_key_in_widget_constructors
 import 'package:flutter/material.dart';
-import 'package:my_flutter_app/about_screen.dart';
 import 'package:my_flutter_app/countries.dart';
 import 'package:my_flutter_app/custom_button.dart';
 import 'package:my_flutter_app/custom_card.dart';
@@ -47,12 +46,6 @@ class _MyCountryAppState extends State<MyCountryApp> {
 
         children: [
           GestureDetector(
-            // onTap: () => Navigator.push(
-            //   context,
-            //   MaterialPageRoute(
-            //     builder: (context) => AboutScreen(),
-            //   ),
-            // ),
             onTap: () => Navigator.pushNamed(context, '/about'),
             child: Padding(
               padding: const EdgeInsets.all(15),
