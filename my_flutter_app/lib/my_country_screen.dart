@@ -7,6 +7,7 @@ import 'package:my_flutter_app/quiz.dart';
 import 'package:my_flutter_app/score_card.dart';
 import 'package:my_flutter_app/utils.dart';
 
+// ignore: use_key_in_widget_constructors
 class MyCountryApp extends StatefulWidget {
   @override
   State<MyCountryApp> createState() => _MyCountryAppState();

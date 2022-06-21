@@ -16,11 +16,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: Colors.red,
         scaffoldBackgroundColor: Colors.lightBlue.shade100,
-        floatingActionButtonTheme: FloatingActionButtonThemeData(
+        floatingActionButtonTheme: const FloatingActionButtonThemeData(
           backgroundColor: Colors.indigo,
         ),
-        appBarTheme: AppBarTheme(backgroundColor: Colors.indigo),
-        textTheme: TextTheme(
+        appBarTheme: const AppBarTheme(backgroundColor: Colors.indigo),
+        textTheme: const TextTheme(
           headline1: TextStyle(
             fontSize: 36,
             fontWeight: FontWeight.w900,

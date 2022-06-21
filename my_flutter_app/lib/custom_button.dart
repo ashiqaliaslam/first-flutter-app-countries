@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
+  // ignore: use_key_in_widget_constructors
   const CustomButton({
     required this.title,
     required this.onPress,

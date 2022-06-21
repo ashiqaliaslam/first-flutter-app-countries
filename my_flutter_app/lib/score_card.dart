@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:my_flutter_app/custom_card.dart';
-import 'package:my_flutter_app/utils.dart';
 
+// ignore: must_be_immutable
 class ScoreCard extends StatelessWidget {
+  // ignore: use_key_in_widget_constructors
   ScoreCard({
     this.score = 0,
     this.totalAttempted = 0,

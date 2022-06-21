@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CustomCard extends StatelessWidget {
+  // ignore: use_key_in_widget_constructors
   const CustomCard({
     this.elevation = 20,
     this.headingWidget,
