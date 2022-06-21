@@ -47,12 +47,13 @@ class _MyCountryAppState extends State<MyCountryApp> {
 
         children: [
           GestureDetector(
-            onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => AboutScreen(),
-              ),
-            ),
+            // onTap: () => Navigator.push(
+            //   context,
+            //   MaterialPageRoute(
+            //     builder: (context) => AboutScreen(),
+            //   ),
+            // ),
+            onTap: () => Navigator.pushNamed(context, '/about'),
             child: Padding(
               padding: const EdgeInsets.all(15),
               child: Row(

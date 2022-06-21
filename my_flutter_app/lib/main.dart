@@ -13,6 +13,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      routes: {
+        '/': (context) => MyCountryApp(),
+        '/about': (context) => AboutScreen(),
+      },
+      initialRoute: '/',
       home: MyCountryApp(),
       theme: ThemeData(
         primaryColor: Colors.red,
