@@ -1,12 +1,13 @@
 // ignore: use_key_in_widget_constructors
 import 'package:flutter/material.dart';
-import 'package:my_flutter_app/countries.dart';
-import 'package:my_flutter_app/custom_button.dart';
-import 'package:my_flutter_app/custom_card.dart';
-import 'package:my_flutter_app/quiz.dart';
-import 'package:my_flutter_app/reset_quiz_value.dart';
-import 'package:my_flutter_app/score_card.dart';
-import 'package:my_flutter_app/utils.dart';
+import 'package:my_flutter_app/constants/app_strings.dart';
+import 'package:my_flutter_app/data/countries.dart';
+import 'package:my_flutter_app/widgets/custom_button.dart';
+import 'package:my_flutter_app/widgets/custom_card.dart';
+import 'package:my_flutter_app/model/quiz.dart';
+import 'package:my_flutter_app/model/reset_quiz_value.dart';
+import 'package:my_flutter_app/widgets/score_card.dart';
+import 'package:my_flutter_app/utils/utils.dart';
 
 // ignore: use_key_in_widget_constructors
 class MyCountryApp extends StatefulWidget {
@@ -34,12 +35,12 @@ class _MyCountryAppState extends State<MyCountryApp> {
       appBar: AppBar(
         centerTitle: true,
         // ignore: prefer_const_constructors
-        title: Text('Guess the Capital City!'),
+        title: Text(AppStrings.appTitle),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: resetQuiz,
         // ignore: prefer_const_constructors
-        child: Text('Reset'),
+        child: Text(AppStrings.reset),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       body: Column(
@@ -56,7 +57,7 @@ class _MyCountryAppState extends State<MyCountryApp> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: const [
                   Text(
-                    'About Us',
+                    AppStrings.aboutUs,
                     style: TextStyle(
                       fontSize: 16,
                       color: Colors.red,
@@ -74,13 +75,15 @@ class _MyCountryAppState extends State<MyCountryApp> {
             height: 200,
             shadowColor: Colors.grey,
             headingWidget: Text(
-              showAnswer ? 'Capital' : 'Country',
+              showAnswer ? AppStrings.capital : AppStrings.country,
               style: theme.textTheme.headline1,
             ),
             bodyWidget: Text(
               showAnswer
-                  ? countries[quizScoreCard.totalAttempted]['city']!
-                  : countries[quizScoreCard.totalAttempted]['country']!,
+                  ? countries[quizScoreCard.totalAttempted]
+                      [AppStrings.city.toLowerCase()]!
+                  : countries[quizScoreCard.totalAttempted]
+                      [AppStrings.country.toLowerCase()]!,
               style: theme.textTheme.subtitle1,
             ),
             onPress: handleShowAnswer,
@@ -90,18 +93,18 @@ class _MyCountryAppState extends State<MyCountryApp> {
             children: [
               CustomButton(
                 onPress: markAnswerCorrect,
-                title: 'Correct',
+                title: AppStrings.correct,
                 backgroundColor: Colors.green,
               ),
               CustomButton(
-                title: 'Wrong',
+                title: AppStrings.wrong,
                 onPress: markAnswerWrong,
                 backgroundColor: Colors.red,
               ),
             ],
           ),
           CustomButton(
-              title: 'Show Result',
+              title: AppStrings.showResult,
               onPress: () {
                 Navigator.pushNamed(
                   context,
@@ -110,7 +113,7 @@ class _MyCountryAppState extends State<MyCountryApp> {
                 ).then((value) {
                   final statusValue = value as ResetQuizValue;
 
-                  if (statusValue.status == 'reset') {
+                  if (statusValue.status == AppStrings.reset) {
                     resetQuiz();
                   }
                 });

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:my_flutter_app/custom_button.dart';
-import 'package:my_flutter_app/custom_card.dart';
-import 'package:my_flutter_app/reset_quiz_value.dart';
+import 'package:my_flutter_app/constants/app_strings.dart';
+import 'package:my_flutter_app/widgets/custom_button.dart';
+import 'package:my_flutter_app/widgets/custom_card.dart';
+import 'package:my_flutter_app/model/reset_quiz_value.dart';
 
 class ResultScreen extends StatelessWidget {
   static const routeName = '/result';
@@ -23,7 +24,7 @@ class ResultScreen extends StatelessWidget {
             CustomCard(
               height: 300,
               headingWidget: Text(
-                'Quiz Ended:',
+                AppStrings.quizEnded,
                 style: theme.textTheme.headline1,
               ),
               bodyWidget: Text(
@@ -35,10 +36,10 @@ class ResultScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 CustomButton(
-                  title: 'Restart',
+                  title: AppStrings.restart,
                   onPress: () => Navigator.pop(
                     context,
-                    ResetQuizValue(status: 'reset'),
+                    ResetQuizValue(status: AppStrings.reset),
                   ),
                 ),
               ],

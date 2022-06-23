@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:my_flutter_app/custom_button.dart';
-import 'package:my_flutter_app/custom_card.dart';
+import 'package:my_flutter_app/constants/app_strings.dart';
+import 'package:my_flutter_app/widgets/custom_button.dart';
+import 'package:my_flutter_app/widgets/custom_card.dart';
 
 // ignore: use_key_in_widget_constructors
 class AboutScreen extends StatelessWidget {
@@ -10,7 +11,7 @@ class AboutScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('About Screen'),
+        title: const Text(AppStrings.aboutScreenTitle),
         centerTitle: true,
       ),
       body: Column(
@@ -18,7 +19,7 @@ class AboutScreen extends StatelessWidget {
         children: [
           const CustomCard(
             bodyWidget: Text(
-              'This is about screen',
+              AppStrings.aboutScreenText,
               style: TextStyle(
                 fontSize: 24,
               ),
@@ -26,7 +27,7 @@ class AboutScreen extends StatelessWidget {
             height: 300,
           ),
           CustomButton(
-            title: 'Go Back',
+            title: AppStrings.goBack,
             onPress: () => Navigator.pop(context),
           ),
         ],

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:my_flutter_app/custom_card.dart';
+import 'package:my_flutter_app/constants/app_strings.dart';
+import 'package:my_flutter_app/widgets/custom_card.dart';
 
 // ignore: must_be_immutable
 class ScoreCard extends StatelessWidget {
@@ -20,11 +21,11 @@ class ScoreCard extends StatelessWidget {
       elevation: 5,
       backgroundColor: theme.scaffoldBackgroundColor,
       headingWidget: Text(
-        'Score',
+        AppStrings.score,
         style: theme.textTheme.headline1,
       ),
       bodyWidget: Text(
-        '$score / $totalAttempted',
+        '$score ${AppStrings.scoreSeparator} $totalAttempted',
         style: theme.textTheme.headline1,
       ),
     );
