@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:my_flutter_app/about_screen.dart';
 import 'package:my_flutter_app/my_country_screen.dart';
+import 'package:my_flutter_app/quiz.dart';
+import 'package:my_flutter_app/result_screen.dart';
 
 void main() {
   runApp(
@@ -16,6 +18,17 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => MyCountryApp(),
         '/about': (context) => AboutScreen(),
+      },
+      onGenerateRoute: (settings) {
+        if (settings.name == '/result') {
+          final arg = settings.arguments as Quiz;
+          return MaterialPageRoute(
+            builder: (context) => ResultScreen(
+              score: arg.score,
+              totalAttempted: arg.totalAttempted,
+            ),
+          );
+        }
       },
       initialRoute: '/',
       theme: ThemeData(

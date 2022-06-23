@@ -4,6 +4,7 @@ import 'package:my_flutter_app/countries.dart';
 import 'package:my_flutter_app/custom_button.dart';
 import 'package:my_flutter_app/custom_card.dart';
 import 'package:my_flutter_app/quiz.dart';
+import 'package:my_flutter_app/reset_quiz-value.dart';
 import 'package:my_flutter_app/score_card.dart';
 import 'package:my_flutter_app/utils.dart';
 
@@ -97,6 +98,21 @@ class _MyCountryAppState extends State<MyCountryApp> {
               ),
             ],
           ),
+          CustomButton(
+              title: 'Show Result',
+              onPress: () {
+                Navigator.pushNamed(
+                  context,
+                  '/result',
+                  arguments: quizScoreCard,
+                ).then((value) {
+                  final statusValue = value as ResetQuizValue;
+
+                  if (statusValue.status == 'reset') {
+                    resetQuiz();
+                  }
+                });
+              })
         ],
       ),
     );
