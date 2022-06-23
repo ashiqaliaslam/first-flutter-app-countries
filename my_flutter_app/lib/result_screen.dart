@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:my_flutter_app/custom_button.dart';
 import 'package:my_flutter_app/custom_card.dart';
-import 'package:my_flutter_app/reset_quiz-value.dart';
+import 'package:my_flutter_app/reset_quiz_value.dart';
 
 class ResultScreen extends StatelessWidget {
+  static const routeName = '/result';
   // ignore: use_key_in_widget_constructors
   const ResultScreen({this.score = 0, this.totalAttempted = 0});
 

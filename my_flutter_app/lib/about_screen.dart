@@ -4,6 +4,8 @@ import 'package:my_flutter_app/custom_card.dart';
 
 // ignore: use_key_in_widget_constructors
 class AboutScreen extends StatelessWidget {
+  static const routeName = '/about';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

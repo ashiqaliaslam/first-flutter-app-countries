@@ -4,12 +4,14 @@ import 'package:my_flutter_app/countries.dart';
 import 'package:my_flutter_app/custom_button.dart';
 import 'package:my_flutter_app/custom_card.dart';
 import 'package:my_flutter_app/quiz.dart';
-import 'package:my_flutter_app/reset_quiz-value.dart';
+import 'package:my_flutter_app/reset_quiz_value.dart';
 import 'package:my_flutter_app/score_card.dart';
 import 'package:my_flutter_app/utils.dart';
 
 // ignore: use_key_in_widget_constructors
 class MyCountryApp extends StatefulWidget {
+  static const routeName = '/';
+
   @override
   State<MyCountryApp> createState() => _MyCountryAppState();
 }
